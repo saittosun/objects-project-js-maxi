@@ -76,3 +76,9 @@ console.log(person3);
 aPerson.hobbies.pop();
 console.log(aPerson);
 console.log(person3);
+
+const person4 = { name: "esra" };
+const person5 = Object.assign({}, person4);
+console.log(person5);
+person4.name = "sait";
+console.log(person5);
