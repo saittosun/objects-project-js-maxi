@@ -36,7 +36,9 @@ const renderMovies = (filter = "") => {
     // this to refer to it inside of that function.
     // getFormattedTitle = getFormattedTitle.bind(movie);
     //  how is call different from bind then? Well bind prepares a function for future execution, bind returns a new function object in the end which we then store here in get formatted title, call does not do that, call instead goes ahead and executes the function right away. So it's like if you added parentheses here but with that extra twist of allowing you to overwrite what this inside of the function refers to, so it executes a function for you when you want to change what this refers to, that's where call is important.
-    let text = getFormattedTitle.call(movie) + "-";
+    // let text = getFormattedTitle.call(movie) + "-";
+    // the difference is call allows you to pass additional arguments as a comma separated list, apply allows you to pass additional arguments as an array.
+    let text = getFormattedTitle.apply(movie) + "-";
     // With that we can go through all keys in an object
     for (const key in info) {
       // this has to be a string because otherwise if you write it like this, Javascript would look for a variable named title which it won't find in this function and it would then use the value stored in this variable for this comparison. So instead since keys are strings as you learned, we compared it to a string here and if the key is not title, then we know we're looking at the property the user entered. Well and this is then what I want to add to my text.
