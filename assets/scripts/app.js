@@ -86,7 +86,9 @@ const addMovieHandler = () => {
   renderMovies();
 };
 
-const searchMovieHandler = () => {
+const searchMovieHandler = function()  {
+  // the browser binds "this" for you (on event listeners) to the DOM element that triggered to the event. this inside of a function that's triggered based on an event listener refers to the element or to the thing that is responsible for triggering this event.
+  console.log(this);
   const filterTerm = document.getElementById("filter-title").value;
   renderMovies(filterTerm);
 };
