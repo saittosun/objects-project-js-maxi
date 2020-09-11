@@ -21,13 +21,16 @@ const renderMovies = (filter = "") => {
 
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement("li");
-    // movieEl.textContent = movie.info.title;
-    let text = movie.info.title + "-";
+    // you have to enter a key name here which exists there. In array destructuring, you could use any names between the square brackets you had there because in arrays, you access values by index and not by name and therefore you could assign any name because the order was important there for pulling elements out of the array. For pulling properties out of objects, the order does absolutely not matter, instead the key matters.
+    const { info, ...otherProps } = movie;
+    console.log(otherProps);
+    const {title: movieTitle} = info;
+    let text = movieTitle + "-";
     // With that we can go through all keys in an object
-    for (const key in movie.info) {
+    for (const key in info) {
       // this has to be a string because otherwise if you write it like this, Javascript would look for a variable named title which it won't find in this function and it would then use the value stored in this variable for this comparison. So instead since keys are strings as you learned, we compared it to a string here and if the key is not title, then we know we're looking at the property the user entered. Well and this is then what I want to add to my text.
       if (key !== "title") {
-        text = text + `${key}: ${movie.info[key]}`;
+        text = text + `${key}: ${info[key]}`;
         movieEl.textContent = text;
       }
     }
