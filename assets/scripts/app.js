@@ -22,9 +22,15 @@ const renderMovies = (filter = "") => {
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement("li");
     // you have to enter a key name here which exists there. In array destructuring, you could use any names between the square brackets you had there because in arrays, you access values by index and not by name and therefore you could assign any name because the order was important there for pulling elements out of the array. For pulling properties out of objects, the order does absolutely not matter, instead the key matters.
+    if ("info" in movie) {
+      alert("info");
+    }
+    if (!("hello" in movie)) {
+      alert("hello");
+    }
     const { info, ...otherProps } = movie;
     console.log(otherProps);
-    const {title: movieTitle} = info;
+    const { title: movieTitle } = info;
     let text = movieTitle + "-";
     // With that we can go through all keys in an object
     for (const key in info) {
