@@ -66,8 +66,11 @@ const addMovieHandler = () => {
       [extraName]: extraValue,
     },
     id: Math.random().toString(),
-    getFormattedTitle: function () {
-      // Inside of a function, no matter if that function is part of an object or not, the this keyword will refer to whatever calls that function, whatever was responsible for executing that function you could say. this is the keyword to tell Javascript look into the object where this function is part of, though to be precise as you learned, look at the thing which is responsible for executing the function which typically is this object since this function is part of that object and then dive into some info property, into some title property and try to call toUppercase on this.
+    // getFormattedTitle: function () {
+    //   // Inside of a function, no matter if that function is part of an object or not, the this keyword will refer to whatever calls that function, whatever was responsible for executing that function you could say. this is the keyword to tell Javascript look into the object where this function is part of, though to be precise as you learned, look at the thing which is responsible for executing the function which typically is this object since this function is part of that object and then dive into some info property, into some title property and try to call toUppercase on this.
+    //   return this.info.title.toUpperCase();
+    // },
+    getFormattedTitle() {
       return this.info.title.toUpperCase();
     },
   };
