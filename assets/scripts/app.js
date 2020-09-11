@@ -86,9 +86,16 @@ const addMovieHandler = () => {
   renderMovies();
 };
 
-const searchMovieHandler = function()  {
-  // the browser binds "this" for you (on event listeners) to the DOM element that triggered to the event. this inside of a function that's triggered based on an event listener refers to the element or to the thing that is responsible for triggering this event.
-  console.log(this);
+// const searchMovieHandler = function()  {
+//   // the browser binds "this" for you (on event listeners) to the DOM element that triggered to the event. this inside of a function that's triggered based on an event listener refers to the element or to the thing that is responsible for triggering this event.
+//   console.log(this);
+//   const filterTerm = document.getElementById("filter-title").value;
+//   renderMovies(filterTerm);
+// };
+
+const searchMovieHandler = () => {
+  // arrow functions don't bind this to anything. arrow functions don't bind this to anything, instead they keep the context or the binding this has to the binding it would have outside of the function and that will become interesting
+  console.log(this);//window
   const filterTerm = document.getElementById("filter-title").value;
   renderMovies(filterTerm);
 };
