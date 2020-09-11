@@ -30,8 +30,9 @@ const renderMovies = (filter = "") => {
     }
     const { info, ...otherProps } = movie;
     console.log(otherProps);
-    const { title: movieTitle } = info;
-    let text = movieTitle + "-";
+    // const { title: movieTitle } = info;
+    // const { getFormattedTitle } = movie;
+    let text = movie.getFormattedTitle() + "-";
     // With that we can go through all keys in an object
     for (const key in info) {
       // this has to be a string because otherwise if you write it like this, Javascript would look for a variable named title which it won't find in this function and it would then use the value stored in this variable for this comparison. So instead since keys are strings as you learned, we compared it to a string here and if the key is not title, then we know we're looking at the property the user entered. Well and this is then what I want to add to my text.
@@ -65,6 +66,10 @@ const addMovieHandler = () => {
       [extraName]: extraValue,
     },
     id: Math.random().toString(),
+    getFormattedTitle: function () {
+      // Inside of a function, no matter if that function is part of an object or not, the this keyword will refer to whatever calls that function, whatever was responsible for executing that function you could say. this is the keyword to tell Javascript look into the object where this function is part of, though to be precise as you learned, look at the thing which is responsible for executing the function which typically is this object since this function is part of that object and then dive into some info property, into some title property and try to call toUppercase on this.
+      return this.info.title.toUpperCase();
+    },
   };
 
   movies.push(newMovie);
